@@ -1,8 +1,9 @@
+import Button from "@/components/button"
 import Star from "@/components/star"
 
 export default function About() {
   return (
-    <main>
+    <main className="px-4 md:px-0">
       <section className="my-8 space-y-8">
         <h3 className="mb-8 text-2xl">Welcome</h3>
 
@@ -18,9 +19,9 @@ export default function About() {
 
         <p className="font-bold">
           We are a tight-knit team of designers, engineers, and entrepreneurs
-          with real industry experience spanning many disciplines. We've
-          designed and developed web strategy for massive brands like Virgin
-          Group, engineered complex infrastructure at Stripe, scaled ecommerce
+          with real industry experience across many disciplines. We've designed
+          and developed web strategy for massive brands like Virgin Group,
+          engineered complex infrastructure at Stripe, scaled ecommerce
           solutions for global businesses, and directed creative for the most
           niche of brands. Perhaps more importantly, we are passionate about
           great design and precise development to create memorable experiences
@@ -28,7 +29,7 @@ export default function About() {
         </p>
       </section>
 
-      <section className="my-16 -mx-12 py-16 px-12 bg-neutral-900 text-neutral-300 rounded-lg">
+      <section className="my-16 -mx-3 md:-mx-12 py-16 px-12 bg-neutral-900 text-neutral-300 rounded-lg">
         <div className="font-display text-2xl font-bold uppercase text-center">
           <Star className="mx-1" />
           <Star className="mx-1" />
@@ -37,14 +38,17 @@ export default function About() {
             We craft <em className="underline">modern experiences</em> that
             elevate brands across digital and physical spaces.
           </p>
+          <Button className="mt-4 text-base" theme="light" href="/">
+            View Our Work
+          </Button>
         </div>
       </section>
 
       <section>
         <h3 className="mb-8 text-2xl">Services</h3>
-        <div className="grid grid-cols-1 gap-x-4 gap-y-12 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
           {services.map((service, index) => (
-            <div className="flex flex-col justify-between border-t border-neutral-900 pt-8 xl:border-l xl:border-t-0 xl:pl-2 xl:pt-0">
+            <div className="flex flex-col justify-between border-t border-neutral-900 pt-8 sm:border-l sm:border-t-0 sm:pl-2 sm:pt-0">
               <div className="font-display font-bold text-sm uppercase">
                 <span className="mb-1 block text-2xl font-light">
                   &#10036;&#xFE0E;
@@ -76,8 +80,11 @@ export default function About() {
         <div className="my-12 space-y-8">
           {process.map((step, index) => (
             <div className="grid grid-cols-5 gap-8">
-              <div className="col-span-1 font-display text-right">
-                <p className="text-lg uppercase">{step.name}</p>
+              <div className="col-span-1 font-display text-left sm:text-right">
+                <p
+                  className="text-lg uppercase"
+                  dangerouslySetInnerHTML={{ __html: step.name }}
+                ></p>
                 <p className="text-5xl">{String(index + 1).padStart(2, "0")}</p>
               </div>
 
@@ -89,7 +96,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="my-8 -mx-12 py-16 px-12 bg-neutral-900 text-neutral-300 rounded-lg">
+      <section className="my-8 -mx-3 md:-mx-12 py-16 px-12 bg-neutral-900 text-neutral-300 rounded-lg">
         <div className="font-display text-2xl font-bold uppercase text-center">
           <Star className="mx-1" />
           <Star className="mx-1" />
@@ -99,6 +106,9 @@ export default function About() {
             that help brands and online creators turn impossible visions into
             reality.
           </p>
+          <Button className="mt-4 text-base" theme="light" href="/contact">
+            Get in Touch
+          </Button>
         </div>
       </section>
 
@@ -143,6 +153,9 @@ export default function About() {
           <Star className="mx-1" />
           <Star className="mx-1" />
           <p className="mt-4">Are you ready to build something dope?</p>
+          <Button className="mt-4 text-base" href="/contact">
+            Get in Touch
+          </Button>
         </div>
       </section>
     </main>
@@ -201,12 +214,12 @@ const services = [
 
 const process = [
   {
-    name: "Discover",
+    name: 'Dis<span class="sm:hidden">-</span><span class="block sm:hidden"></span>cover',
     description:
       "We work with you to nail down branding, voice, and creative direction prior to scoping out development of the project. This ensures the full creative vision is laid out and all costs are understood.",
   },
   {
-    name: "Execute",
+    name: 'Ex<span class="sm:hidden">-</span><span class="block sm:hidden"></span>ecute',
     description:
       "Once all the requirements and costs are identified, we scope out the project and execute on our collaborative discovery. This is where we bring your idea to life.",
   },

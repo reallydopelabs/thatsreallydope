@@ -38,15 +38,15 @@ export default function Project({ params }) {
     return <Error statusCode={404} title="This project could not be found" />
 
   return (
-    <main className="mt-4 grid grid-cols-2 items-start border border-neutral-400 h-[90vh] overflow-scroll">
-      <div>
+    <main className="md:mt-4 grid grid-cols-1 md:grid-cols-2 items-start border border-neutral-400 h-[90vh] overflow-scroll">
+      <div className="order-last md:order-first">
         {project.attributes.showcase.data &&
           project.attributes.showcase.data.map((imageData) => (
             <img src={getUploadUrlFromStrapiData(imageData)} />
           ))}
       </div>
-      <div className="sticky top-0">
-        <header className="p-6 flex items-center gap-6 border-b border-neutral-400">
+      <div className="md:sticky md:top-0">
+        <header className="sticky top-0 md:relative p-6 flex items-center gap-6 border-b border-neutral-400 bg-neutral-300">
           <div className="relative">
             <Link href="/">
               <Logo className="w-8 h-8 rounded-full" />
