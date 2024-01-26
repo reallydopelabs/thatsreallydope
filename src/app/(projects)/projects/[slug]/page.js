@@ -41,8 +41,8 @@ export default function Project({ params }) {
     <main className="md:mt-4 grid grid-cols-1 md:grid-cols-2 items-start border border-neutral-400 h-[90vh] overflow-scroll">
       <div className="order-last md:order-first">
         {project.attributes.showcase.data &&
-          project.attributes.showcase.data.map((imageData) => (
-            <img src={getUploadUrlFromStrapiData(imageData)} />
+          project.attributes.showcase.data.map((imageData, index) => (
+            <img key={index} src={getUploadUrlFromStrapiData(imageData)} />
           ))}
       </div>
       <div className="md:sticky md:top-0">

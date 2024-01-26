@@ -16,7 +16,7 @@ export default function Contact() {
         </h3>
 
         <p className="font-bold">
-          We're here for it. Schedule a call with our team or email us at{" "}
+          We&apos;re here for it. Schedule a call with our team or email us at{" "}
           <a className="underline" href="mailto:hey@thatsrdd.com">
             hey@thatsrdd.com
           </a>

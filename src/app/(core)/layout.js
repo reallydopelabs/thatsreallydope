@@ -92,11 +92,11 @@ export default async function RootLayout({ children }) {
                 <MapPinIcon className="-mt-1 w-3 inline-block"></MapPinIcon>{" "}
                 {headerData.location}
               </p>
-              {headerData.featured_clients.data && (
+              {headerData.featured_clients?.data && (
                 <p className="mt-3 text-xs font-bold text-neutral-500">
                   Contracted by{" "}
-                  {headerData.featured_clients.data.map((client) => (
-                    <span>
+                  {headerData.featured_clients.data.map((client, index) => (
+                    <span key={index}>
                       <Link
                         href={`/clients/${client.attributes.slug}`}
                         className="text-neutral-900"

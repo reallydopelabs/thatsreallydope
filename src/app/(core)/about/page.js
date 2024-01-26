@@ -19,9 +19,9 @@ export default function About() {
 
         <p className="font-bold">
           We are a tight-knit team of designers, engineers, and entrepreneurs
-          with real industry experience across many disciplines. We've designed
-          and developed web strategy for massive brands like Virgin Group,
-          engineered complex infrastructure at Stripe, scaled ecommerce
+          with real industry experience across many disciplines. We&apos;ve
+          designed and developed web strategy for massive brands like Virgin
+          Group, engineered complex infrastructure at Stripe, scaled ecommerce
           solutions for global businesses, and directed creative for the most
           niche of brands. Perhaps more importantly, we are passionate about
           great design and precise development to create memorable experiences
@@ -48,7 +48,10 @@ export default function About() {
         <h3 className="mb-8 text-2xl">Services</h3>
         <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
           {services.map((service, index) => (
-            <div className="flex flex-col justify-between border-t border-neutral-900 pt-8 sm:border-l sm:border-t-0 sm:pl-2 sm:pt-0">
+            <div
+              key={index}
+              className="flex flex-col justify-between border-t border-neutral-900 pt-8 sm:border-l sm:border-t-0 sm:pl-2 sm:pt-0"
+            >
               <div className="font-display font-bold text-sm uppercase">
                 <span className="mb-1 block text-2xl font-light">
                   &#10036;&#xFE0E;
@@ -59,7 +62,9 @@ export default function About() {
               <div className="mt-10">
                 <ul>
                   {service.includes.map((sub, j) => (
-                    <li className="uppercase">{sub}</li>
+                    <li key={j} className="uppercase">
+                      {sub}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -71,7 +76,7 @@ export default function About() {
       <section className="my-16">
         <h3 className="mb-8 text-2xl">Process</h3>
         <p className="font-bold">
-          We've spent years refining the way we work with our partners to
+          We&apos;ve spent years refining the way we work with our partners to
           simplify the process and maximize results. Our simple, three-step
           process to collaboration and execution applies to all of our services,
           ensuring strong and transparent partnerships.
@@ -79,7 +84,7 @@ export default function About() {
 
         <div className="my-12 space-y-8">
           {process.map((step, index) => (
-            <div className="grid grid-cols-5 gap-8">
+            <div key={index} className="grid grid-cols-5 gap-8">
               <div className="col-span-1 font-display text-left sm:text-right">
                 <p
                   className="text-lg uppercase"
@@ -123,7 +128,7 @@ export default function About() {
 
         <div className=" max-w-md mt-12 space-y-8">
           {testimonials.map((testimonial, index) => (
-            <div className="flex items-end gap-2">
+            <div key={index} className="flex items-end gap-2">
               <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-neutral-900">
                 <img
                   src={testimonial.avatar}
