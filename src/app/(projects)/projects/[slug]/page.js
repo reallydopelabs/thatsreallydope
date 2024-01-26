@@ -54,15 +54,15 @@ export default function Project({ params }) {
 
             <Link
               href={
-                project.attributes.client.data
-                  ? `/clients/${project.attributes.client.data.attributes.slug}`
+                project.attributes.client?.data
+                  ? `/clients/${project.attributes.client?.data.attributes.slug}`
                   : "/"
               }
             >
-              {project.attributes.client.data?.attributes.icon.data ? (
+              {project.attributes.client?.data?.attributes.icon.data ? (
                 <img
                   src={getUploadUrlFromStrapiData(
-                    project.attributes.client.data?.attributes.icon.data,
+                    project.attributes.client?.data?.attributes.icon.data,
                     "xs"
                   )}
                   className="w-8 h-8 rounded-full absolute top-4 left-4"
@@ -79,14 +79,14 @@ export default function Project({ params }) {
             and{" "}
             <Link
               href={
-                project.attributes.client.data
-                  ? `/clients/${project.attributes.client.data.attributes.slug}`
+                project.attributes.client?.data
+                  ? `/clients/${project.attributes.client?.data.attributes.slug}`
                   : "/"
               }
               className="font-bold text-neutral-900"
             >
-              {project.attributes.client.data
-                ? project.attributes.client.data.attributes.handle
+              {project.attributes.client?.data
+                ? project.attributes.client?.data.attributes.handle
                 : "null"}
             </Link>
           </div>
