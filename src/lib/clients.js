@@ -1,6 +1,8 @@
+import { strapiUrl } from "./strapi"
+
 export async function getClients() {
   const res = await fetch(
-    "http://localhost:1337/api/clients?sort=title:asc&populate=icon"
+    `${strapiUrl}/api/clients?sort=title:asc&populate=icon`
   )
 
   if (!res.ok) {

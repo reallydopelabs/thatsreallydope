@@ -1,6 +1,8 @@
+import { strapiUrl } from "./strapi"
+
 export async function getProjects() {
   const res = await fetch(
-    "http://localhost:1337/api/projects?filters[pin][$eq]=false&sort=id:desc&populate=tile_image"
+    `${strapiUrl}/api/projects?filters[pin][$eq]=false&sort=id:desc&populate=tile_image`
   )
 
   if (!res.ok) {
@@ -12,7 +14,7 @@ export async function getProjects() {
 
 export async function getPinnedProjects() {
   const res = await fetch(
-    "http://localhost:1337/api/projects?filters[pin][$eq]=true&sort=updatedAt:desc&pagination[limit]=3&populate=*"
+    `${strapiUrl}/api/projects?filters[pin][$eq]=true&sort=updatedAt:desc&pagination[limit]=3&populate=*`
   )
 
   if (!res.ok) {
@@ -24,7 +26,7 @@ export async function getPinnedProjects() {
 
 export async function getProjectBySlug(slug) {
   const res = await fetch(
-    `http://localhost:1337/api/projects?filters[slug][$eq]=${slug}&populate=deep`
+    `${strapiUrl}/api/projects?filters[slug][$eq]=${slug}&populate=deep`
   )
 
   if (!res.ok) {
@@ -37,7 +39,7 @@ export async function getProjectBySlug(slug) {
 
 export async function getClientProjects(clientSlug) {
   const res = await fetch(
-    `http://localhost:1337/api/projects?filters[client][slug][$eq]=${clientSlug}&sort=id:desc&populate=*`
+    `${strapiUrl}/api/projects?filters[client][slug][$eq]=${clientSlug}&sort=id:desc&populate=*`
   )
 
   if (!res.ok) {

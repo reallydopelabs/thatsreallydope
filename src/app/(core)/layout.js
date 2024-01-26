@@ -3,9 +3,10 @@ import "../globals.css"
 import Link from "next/link"
 import Logo from "@/components/logo"
 import ContactPopup from "@/components/contactPopup"
+import { strapiUrl } from "@/lib/strapi"
 
 async function getHeaderData() {
-  const headerRes = await fetch("http://localhost:1337/api/header?populate=*")
+  const headerRes = await fetch(`${strapiUrl}/api/header?populate=*`)
 
   if (!headerRes.ok) {
     throw new Error("Failed to fetch header")
@@ -17,9 +18,7 @@ async function getHeaderData() {
 }
 
 async function getClientCount() {
-  const response = await fetch(
-    "http://localhost:1337/api/clients?pagination[limit]=1"
-  )
+  const response = await fetch(`${strapiUrl}/api/clients?pagination[limit]=1`)
 
   if (!response.ok) {
     console.warn("Failed to fetch client count")
