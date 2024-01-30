@@ -1,6 +1,7 @@
 import { getClients } from "@/lib/clients"
 import Profile from "@/components/profile"
 import { getUploadUrlFromStrapiData } from "@/lib/strapi"
+import { inspectJSON } from "@/lib/debug"
 
 function renderClient(client) {
   return (
@@ -9,7 +10,7 @@ function renderClient(client) {
         data={{
           href: `/clients/${client.attributes.slug}`,
           image: client.attributes.icon.data
-            ? getUploadUrlFromStrapiData(client.attributes.icon.data, "s")
+            ? getUploadUrlFromStrapiData(client.attributes.icon.data, "xs")
             : null,
           title: client.attributes.title,
         }}
