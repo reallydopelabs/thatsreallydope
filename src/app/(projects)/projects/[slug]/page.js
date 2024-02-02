@@ -9,11 +9,14 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer"
 import { inspectJSON } from "@/lib/debug"
 import { getUploadUrlFromStrapiData } from "@/lib/strapi"
 import { XMarkIcon } from "@heroicons/react/24/solid"
+import { Lightbox, useLightboxState } from "yet-another-react-lightbox/core"
+import "yet-another-react-lightbox/styles.css"
 
 export default function Project({ params }) {
   const [project, setProject] = useState(null)
   const [loading, setLoading] = useState(true)
   const [notFound, setNotFound] = useState(false)
+  const [galleryIndex, setGalleryIndex] = useState(-1)
 
   useEffect(() => {
     getProjectBySlug(params.slug)
@@ -33,17 +36,43 @@ export default function Project({ params }) {
       })
   }, [params.slug])
 
-  if (loading) return <p>Loading...</p>
-  if (notFound)
+  if (loading) {
+    return <p>Loading...</p>
+  }
+  if (notFound) {
     return <Error statusCode={404} title="This project could not be found" />
+  }
+
+  let images = []
+
+  project.attributes.showcase.data &&
+    project.attributes.showcase.data.map((imageData) => {
+      images.push({
+        src: getUploadUrlFromStrapiData(imageData),
+        sizes: {
+          m: getUploadUrlFromStrapiData(imageData, "m"),
+        },
+      })
+    })
 
   return (
     <main className="md:mt-4 grid grid-cols-1 md:grid-cols-2 items-start border border-neutral-400 h-[90vh] overflow-scroll">
       <div className="order-last md:order-first">
-        {project.attributes.showcase.data &&
-          project.attributes.showcase.data.map((imageData, index) => (
-            <img key={index} src={getUploadUrlFromStrapiData(imageData)} />
-          ))}
+        {images.map((image, i) => (
+          <img
+            key={i}
+            src={image.sizes.m}
+            onClick={() => setGalleryIndex(i)}
+            className="cursor-pointer"
+          />
+        ))}
+
+        <Lightbox
+          index={galleryIndex}
+          open={galleryIndex >= 0}
+          close={() => setGalleryIndex(-1)}
+          slides={images}
+        />
       </div>
       <div className="md:sticky md:top-0">
         <header className="sticky top-0 md:relative p-6 flex items-center gap-6 border-b border-neutral-400 bg-neutral-300">
