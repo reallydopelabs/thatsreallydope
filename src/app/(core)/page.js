@@ -32,7 +32,7 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="py-2 grid grid-cols-3 gap-[1px] lg:gap-1">
+      <section className="mt-1 pb-2 grid grid-cols-3 gap-[1px] lg:gap-1">
         {pinnedProjects.map((project, index) =>
           renderProject(index, project, true)
         )}

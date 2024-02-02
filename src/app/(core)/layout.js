@@ -4,6 +4,7 @@ import Link from "next/link"
 import Logo from "@/components/logo"
 import ContactPopup from "@/components/contactPopup"
 import { strapiUrl } from "@/lib/strapi"
+import PrimaryNavigation from "@/components/primaryNavigation"
 
 async function getHeaderData() {
   const headerRes = await fetch(`${strapiUrl}/api/header?populate=*`)
@@ -115,17 +116,7 @@ export default async function RootLayout({ children }) {
             </div>
           </div>
 
-          <nav className="col-span-5 mt-6 text-center border-t border-neutral-400">
-            <Link className="inline-block p-2 mx-4" href="/">
-              Projects
-            </Link>
-            <Link className="inline-block p-2 mx-4" href="/ideas">
-              Ideas
-            </Link>
-            <Link className="inline-block p-4 mx-4" href="/about">
-              About
-            </Link>
-          </nav>
+          <PrimaryNavigation />
         </header>
         {children}
         <footer className="mt-4 border-t border-neutral-400 py-6">
