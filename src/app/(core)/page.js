@@ -3,7 +3,7 @@ import { getPinnedProjects, getProjects } from "@/lib/projects"
 import { getUploadUrlFromStrapiData } from "@/lib/strapi"
 import Tile from "@/components/tile"
 
-function renderProject(project, pinned) {
+function renderProject(index, project, pinned) {
   const tileData = {
     href: `/projects/${project.attributes.slug}`,
     image: project.attributes.tile_image.data
@@ -13,7 +13,7 @@ function renderProject(project, pinned) {
     pinned: pinned,
   }
 
-  return <Tile data={tileData} />
+  return <Tile key={index} data={tileData} />
 }
 
 export default async function Home() {
@@ -33,8 +33,10 @@ export default async function Home() {
   return (
     <main>
       <section className="py-2 grid grid-cols-3 gap-[1px] lg:gap-1">
-        {pinnedProjects.map((project) => renderProject(project, true))}
-        {projects.map((project) => renderProject(project))}
+        {pinnedProjects.map((project, index) =>
+          renderProject(index, project, true)
+        )}
+        {projects.map((project, index) => renderProject(index, project))}
       </section>
     </main>
   )
