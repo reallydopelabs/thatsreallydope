@@ -4,22 +4,15 @@ import clsx from "clsx"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-function checkActivePath(path) {
+export default function PrimaryNavigation() {
   const pathname = usePathname()
 
-  if (path === "/" && pathname !== path) {
-    return false
-  }
-  return pathname.startsWith(path)
-}
-
-export default function PrimaryNavigation() {
   return (
     <nav className="col-span-5 mt-6 text-center border-t border-neutral-400">
       <Link
         className={clsx(
           "inline-block p-3 mx-4 border-b-2",
-          checkActivePath("/") ? "font-bold border-black" : "border-transparent"
+          pathname == "/" ? "font-bold border-black" : "border-transparent"
         )}
         href="/"
       >
@@ -28,9 +21,7 @@ export default function PrimaryNavigation() {
       <Link
         className={clsx(
           "inline-block p-2 mx-4 border-b-2",
-          checkActivePath("/ideas")
-            ? "font-bold border-black"
-            : "border-transparent"
+          pathname == "/ideas" ? "font-bold border-black" : "border-transparent"
         )}
         href="/ideas"
       >
@@ -39,9 +30,7 @@ export default function PrimaryNavigation() {
       <Link
         className={clsx(
           "inline-block p-2 mx-4 border-b-2",
-          checkActivePath("/about")
-            ? "font-bold border-black"
-            : "border-transparent"
+          pathname == "/about" ? "font-bold border-black" : "border-transparent"
         )}
         href="/about"
       >
