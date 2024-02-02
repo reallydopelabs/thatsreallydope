@@ -1,0 +1,16 @@
+.project-content p {
+  @apply my-6;
+}
+
+.project-content ul {
+  @apply my-6 ml-4;
+  @apply list-disc;
+}
+
+.project-content ul li {
+  @apply my-2;
+}
+
+.project-content a {
+  @apply font-bold underline;
+}

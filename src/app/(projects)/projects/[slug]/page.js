@@ -11,6 +11,7 @@ import { getUploadUrlFromStrapiData } from "@/lib/strapi"
 import { XMarkIcon } from "@heroicons/react/24/solid"
 import { Lightbox, useLightboxState } from "yet-another-react-lightbox/core"
 import "yet-another-react-lightbox/styles.css"
+import "./local.css"
 
 export default function Project({ params }) {
   const [project, setProject] = useState(null)
@@ -125,7 +126,7 @@ export default function Project({ params }) {
           </Link>
         </header>
 
-        <section className="p-6">
+        <section className="project-content p-6">
           {project.attributes.description && (
             <BlocksRenderer content={project.attributes.description} />
           )}
