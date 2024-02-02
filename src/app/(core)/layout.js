@@ -42,7 +42,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="mx-auto w-full max-w-2xl font-text">
-        <header className="grid grid-cols-5 sm:py-10">
+        <header className="grid grid-cols-5 sm:pt-10">
           <div className="col-span-5 grid items-center grid-cols-5 gap-8 py-6 px-4 sm:hidden">
             <div className="col-span-2">
               <Link href="/">
